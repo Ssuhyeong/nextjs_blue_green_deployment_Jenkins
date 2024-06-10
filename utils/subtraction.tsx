@@ -1,3 +1,5 @@
-export default function subtraction(a, b) {
+function subtraction(a, b) {
   return a - b;
 }
+
+module.exports = subtraction;

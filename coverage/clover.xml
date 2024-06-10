@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1718042518380" clover="3.2.0">
-  <project timestamp="1718042518381" name="All files">
+<coverage generated="1718042749527" clover="3.2.0">
+  <project timestamp="1718042749527" name="All files">
     <metrics statements="9" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1" elements="13" coveredelements="3" complexity="0" loc="9" ncloc="9" packages="2" files="4" classes="4"/>
     <package name="pages">
       <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -25,8 +25,8 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="subtraction.tsx" path="C:\Users\tngud\OneDrive\바탕 화면\next.js\learn-nextjs14\utils\subtraction.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
       </file>
     </package>
   </project>
