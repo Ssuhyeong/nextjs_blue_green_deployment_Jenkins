@@ -1,10 +1,12 @@
 pipeline {
   agent any
-    stages {
-      stage('stage 1') {
-        steps {
-          echo "Hellow world"
+    tools {nodejs "18.17.0"}
+      stages {
+        stage('Build') {
+          steps {
+            sh "sudo npm install"
+            sh "sudo npm run build"
+          }
         }
       }
-    }
 }
