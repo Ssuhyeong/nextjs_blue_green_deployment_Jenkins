@@ -1,58 +1,42 @@
 <?xml version="1.0" ?>
 <!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
-<coverage lines-valid="10" lines-covered="2" line-rate="0.2" branches-valid="0" branches-covered="0" branch-rate="1" timestamp="1718040466277" complexity="0" version="0.1">
+<coverage lines-valid="9" lines-covered="2" line-rate="0.22219999999999998" branches-valid="0" branches-covered="0" branch-rate="1" timestamp="1718042518386" complexity="0" version="0.1">
   <sources>
     <source>C:\Users\tngud\OneDrive\바탕 화면\next.js\learn-nextjs14</source>
   </sources>
   <packages>
     <package name="pages" line-rate="0" branch-rate="1">
       <classes>
-        <class name="layout.tsx" filename="pages\layout.tsx" line-rate="0" branch-rate="1">
-          <methods>
-            <method name="RootLayout" hits="0" signature="()V">
-              <lines>
-                <line number="6" hits="0"/>
-              </lines>
-            </method>
-          </methods>
-          <lines>
-            <line number="1" hits="0" branch="false"/>
-            <line number="6" hits="0" branch="false"/>
-          </lines>
-        </class>
-        <class name="not-found.tsx" filename="pages\not-found.tsx" line-rate="0" branch-rate="1">
+        <class name="404.tsx" filename="pages\404.tsx" line-rate="0" branch-rate="1">
           <methods>
             <method name="NotFound" hits="0" signature="()V">
               <lines>
-                <line number="3" hits="0"/>
+                <line number="1" hits="0"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="1" hits="0" branch="false"/>
-            <line number="3" hits="0" branch="false"/>
+            <line number="2" hits="0" branch="false"/>
           </lines>
         </class>
-        <class name="page.tsx" filename="pages\page.tsx" line-rate="0" branch-rate="1">
+        <class name="_app.tsx" filename="pages\_app.tsx" line-rate="0" branch-rate="1">
           <methods>
-            <method name="Page" hits="0" signature="()V">
+            <method name="App" hits="0" signature="()V">
               <lines>
-                <line number="3" hits="0"/>
+                <line number="4" hits="0"/>
               </lines>
             </method>
           </methods>
           <lines>
             <line number="1" hits="0" branch="false"/>
-            <line number="3" hits="0" branch="false"/>
+            <line number="2" hits="0" branch="false"/>
+            <line number="4" hits="0" branch="false"/>
           </lines>
         </class>
-      </classes>
-    </package>
-    <package name="pages.about-us" line-rate="0" branch-rate="1">
-      <classes>
-        <class name="page.tsx" filename="pages\about-us\page.tsx" line-rate="0" branch-rate="1">
+        <class name="about.tsx" filename="pages\about.tsx" line-rate="0" branch-rate="1">
           <methods>
-            <method name="AboutUs" hits="0" signature="()V">
+            <method name="Home" hits="0" signature="()V">
               <lines>
                 <line number="3" hits="0"/>
               </lines>
@@ -67,7 +51,7 @@
     </package>
     <package name="utils" line-rate="1" branch-rate="1">
       <classes>
-        <class name="subtraction.js" filename="utils\subtraction.js" line-rate="1" branch-rate="1">
+        <class name="subtraction.tsx" filename="utils\subtraction.tsx" line-rate="1" branch-rate="1">
           <methods>
             <method name="subtraction" hits="1" signature="()V">
               <lines>
@@ -76,8 +60,8 @@
             </method>
           </methods>
           <lines>
+            <line number="1" hits="1" branch="false"/>
             <line number="2" hits="1" branch="false"/>
-            <line number="5" hits="1" branch="false"/>
           </lines>
         </class>
       </classes>
