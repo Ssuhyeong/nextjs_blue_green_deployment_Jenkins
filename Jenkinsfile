@@ -25,8 +25,7 @@ pipeline {
         } 
         stage('Deploy') {
           steps {
-            sh 'sudo chmod +x ./script/deploy.sh'
-            sh 'sudo ./script/deploy.sh'
+            sh 'npm run start'
           }
         } 
     }
