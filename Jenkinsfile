@@ -18,14 +18,9 @@ pipeline {
             }
           }
         } 
-        stage('Build') {
+        stage('Build and Deploy') {
           steps {
-            sh "npm run build"
-          }
-        } 
-        stage('Deploy') {
-          steps {
-            sh 'npm run start'
+            sh './deploy.sh'
           }
         } 
     }
