@@ -1,14 +1,16 @@
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function NavBar() {
   const router = useRouter();
   return (
-    <nav>
-      <img src='/vercel.svg' />
+    <nav className="nav">
+      <img src="/vercel.svg" alt="Vercel Logo" />
       <div>
-        <Link href='/about' legacyBehavior>
-          <a className={router.pathname === '/about' ? 'active' : ''}>About</a>
+        <Link href="/about" legacyBehavior>
+          <div className={router.pathname === "/about" ? "active" : ""}>
+            About
+          </div>
         </Link>
       </div>
       <style jsx>{`
@@ -19,7 +21,9 @@ export default function NavBar() {
           align-items: center;
           padding-top: 20px;
           padding-bottom: 10px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+          box-shadow:
+            rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         img {
           max-width: 100px;
