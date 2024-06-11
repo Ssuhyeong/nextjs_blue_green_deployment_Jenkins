@@ -20,6 +20,7 @@ pipeline {
         } 
         stage('Build and Deploy') {
           steps {
+            sh 'chmod +x ./deploy.sh'
             sh './deploy.sh'
           }
         } 
