@@ -17,5 +17,14 @@ pipeline {
             }
           }
         }
+        stage('Lint') {
+          steps {
+            script {
+              FAILED_STAGE=env.STAGE_NAME
+              sh "npm install"
+              sh "npm run lint"
+            }
+          }
+        }
       }
 }
