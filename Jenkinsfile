@@ -18,11 +18,23 @@ pipeline {
             }
           }
         } 
-        stage('Build and Deploy') {
-          steps {
-            sh 'chmod +x ./deploy.sh'
-            sh './deploy.sh'
-          }
-        } 
+         stage('Build Docker Image') {
+            steps {
+                script {
+                    // Docker 이미지를 빌드합니다.
+                    sh 'docker build -t nextjs-app .'
+                }
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                script {
+                    // 기존에 실행 중인 컨테이너를 중지하고 삭제합니다.
+                    sh 'docker stop front-web || true && docker rm front-web || true'
+                    // Docker 컨테이너를 실행합니다.
+                    sh 'docker run --name front-web -d -p 3400:3000 nextjs-app'
+                }
+            }
+        }
     }
 }

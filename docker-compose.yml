@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "3400:3000" # 호스트의 포트 3400을 컨테이너의 포트 3000에 매핑합니다.
+    environment:
+      NODE_ENV: production
