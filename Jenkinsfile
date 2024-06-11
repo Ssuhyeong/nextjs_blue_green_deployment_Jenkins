@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {nodejs "NodeJS 18.17.0"}
      stages {
-        stage('Lint') {
+        stage('lint') {
           steps {
             script {
               FAILED_STAGE=env.STAGE_NAME
