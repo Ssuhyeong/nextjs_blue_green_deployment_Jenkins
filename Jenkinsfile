@@ -26,18 +26,9 @@ pipeline {
         stage('deploy') {
             steps {
                 script {
-                    // Check if the production build exists before starting the server
-                    if (!fileExists('.next')) {
-                        echo "Production build not found. Building the app first."
-                        sh "npm run build"
-                    }
-                    sh 'npm start'
+                    sh 'npm run dev'
                 }
             }
         } 
     }
-}
-
-def fileExists(filePath) {
-    return file(filePath).exists()
 }
