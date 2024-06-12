@@ -23,7 +23,7 @@ pipeline {
                 sh "npm run build"
             }
         } 
-        stage('Deploy') {
+        stage('deploy') {
             steps {
                 script {
                     // Check if the production build exists before starting the server
