@@ -61,7 +61,7 @@ pipeline {
         }
 	// develop브랜치인 경우 develop-server에서 nginx docker container를 실행한다.
 	// develop-server에서 build_n_run.sh 실행
-        stage("Build and Run Nginx for develop") {
+        stage("Build and Run nginx for develop") {
             when {
                 branch 'develop'
             }
