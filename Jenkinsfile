@@ -1,9 +1,3 @@
-stage('something branch stage') {
-	when {
-// 오직 multibranch Pipeline 프로젝트에서만 작동한다.
-		branch 'something'
-  }
-}
 pipeline {
     agent any
     tools {
