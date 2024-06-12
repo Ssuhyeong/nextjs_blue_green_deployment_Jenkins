@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  next-app:
+    image: nextjs
+    container_name: nextjs-dev
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 3000:3000
