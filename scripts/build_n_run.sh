@@ -3,8 +3,8 @@ DEPLOYPATH="/home/ec2-user/deploy/"
 CURRENT="blue"
 ALTER="green"
 
-EXIST_CURRENT=$(docker compose ${DOCKER_APP_NAME}-${CURRENT} ps --status=running | grep ${DOCKER_APP_NAME}-${CURRENT}) 
-EXIST_ALTER=$(docker compose ${DOCKER_APP_NAME}-${ALTER} ps --status=running | grep ${DOCKER_APP_NAME}-${ALTER}) 
+EXIST_CURRENT=$(docker compose ${DOCKER_APP_NAME}-${CURRENT} ps | grep ${DOCKER_APP_NAME}-${CURRENT}) 
+EXIST_ALTER=$(docker compose ${DOCKER_APP_NAME}-${ALTER} ps | grep ${DOCKER_APP_NAME}-${ALTER}) 
 DATE=$(date '+%Y%m%d%H%M%S') #배포날짜변수 
 echo "DATE : $DATE"
 
@@ -33,6 +33,6 @@ else
     echo "${DOCKER_APP_NAME}-${CURRENT} down end"
     echo "$EXIST_ALTER up end"
 fi 
- echo "deploy successfully finished" 
+echo "deploy successfully finished" 
 
 exit 0
