@@ -1,18 +1,6 @@
-stage('something branch stage') {
-	when {
-// 오직 multibranch Pipeline 프로젝트에서만 작동한다.
-		branch 'something'
-  }
-}
 pipeline {
     agent any
-    tools {
-        nodejs 'Nodejs'
-    }
-    parameters {
-        choice(name:'VERSION', choices:['1.0', '1.1', '1.2'], description:'Choose the version of the project')
-        booleanParam(name :'executeTests', description:'Execute the tests', defaultValue:false)
-    }
+    tools {nodejs "NodeJS 18.17.0"}
     stages {
 	// Something; Build, Test, etc.
 	// develop브랜치인 경우 develop-server로 프로젝트 파일을 보내준다.
