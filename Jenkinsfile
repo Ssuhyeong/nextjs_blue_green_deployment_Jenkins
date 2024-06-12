@@ -1,154 +1,43 @@
 pipeline {
     agent any
     tools {nodejs "NodeJS 18.17.0"}
-    stages {
-	// Something; Build, Test, etc.
-	// develop브랜치인 경우 develop-server로 프로젝트 파일을 보내준다.
-        stage('Transfer to develop server') {
-            when {
-                branch 'develop'
-            }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
+     stages {
+        stage('Lint') {
+            steps {
                 script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-	// 아까 '시스템 설정' 에서 Publish Over SSH > SSH server의 name으로 설정한 것)
-                                configName: "develop-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        sourceFiles: "**/**",
-                                        excludes: "**/node_modules/**,.git/",
-                                        execCommand: "chmod +x /home/ec2-user/deploy/scripts/deploy_dev.sh; chmod +x /home/ec2-user/deploy/scripts/build_n_run.sh;"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
+                    FAILED_STAGE=env.STAGE_NAME
+                    sh "npm install"
+                    sh "npm run lint"
                 }
             }
         }
-	// main브랜치인 경우 operation-server로 프로젝트 파일을 보내준다.
-        stage('Transfer to operation server') {
-            when {
-                branch 'main'
-            }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
+        stage('Test') {
+            steps {
                 script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "operation-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        sourceFiles: "**/**",
-                                        excludes: "**/node_modules/**,.git/",
-                                        execCommand: "chmod +x /home/ec2-user/deploy/scripts/deploy.sh; chmod +x /home/ec2-user/deploy/scripts/build_n_run.sh;"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
+                    sh 'npm run test:coverage'
                 }
             }
-        }
-	// develop브랜치인 경우 develop-server에서 nginx docker container를 실행한다.
-	// develop-server에서 build_n_run.sh 실행
-        stage("Build and Run nginx for develop") {
-            when {
-                branch 'develop'
+        } 
+        stage('Build') {
+            steps {
+                sh "npm run build"
             }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
+        } 
+        stage('Deploy') {
+            steps {
                 script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "develop-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/build_n_run.sh"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
+                    // Check if the production build exists before starting the server
+                    if (!fileExists('.next')) {
+                        echo "Production build not found. Building the app first."
+                        sh "npm run build"
+                    }
+                    sh 'npm start'
                 }
             }
-        }
-	// main브랜치인 경우 operation-server에서 nginx docker container를 실행한다.
-	// operation-server에서 build_n_run.sh 실행
-        stage("Build and Run nginx for operation") {
-            when {
-                branch 'main'
-            }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
-                script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "operation-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/build_n_run.sh"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
-        }
-	// develop브랜치인 경우 develop-server에 배포한다.
-	// develop-server에서 deploy_dev.sh 실행
-        stage("Deploy for develop") {
-            when {
-                branch 'develop'
-            }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
-                script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "develop-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/deploy_dev.sh"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
-        }
-	// main브랜치인 경우 operation-server에 배포한다.
-	// operation-server에서 deploy.sh 실행
-        stage("Deploy for operation") {
-            when {
-                branch 'main'
-            }
-            steps([$class: "BapSshPromotionPublisherPlugin"]) {
-                script {
-                    sshPublisher(
-                        publishers: [
-                            sshPublisherDesc(
-                                configName: "operation-server",
-                                verbose: true,
-                                transfers: [
-                                    sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/deploy.sh"
-                                    )
-                                ]
-                            )
-                        ]
-                    )
-                }
-            }
-        }
+        } 
     }
+}
+
+def fileExists(filePath) {
+    return file(filePath).exists()
 }
