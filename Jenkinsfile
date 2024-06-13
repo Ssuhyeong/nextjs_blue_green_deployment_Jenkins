@@ -25,7 +25,7 @@ pipeline {
                                     sshTransfer(
                                         sourceFiles: "**/**",
                                         excludes: "**/node_modules/**,.git/",
-                                        execCommand: "chmod +x /home/ec2-user/deploy/scripts/deploy_dev.sh; chmod +x /home/ec2-user/deploy/scripts/build_n_run.sh;"
+                                        execCommand: "chmod +x /home/ec2-user/deploy/script/deploy_dev.sh; chmod +x /home/ec2-user/deploy/script/build_n_run.sh;"
                                     )
                                 ]
                             )
@@ -50,7 +50,7 @@ pipeline {
                                     sshTransfer(
                                         sourceFiles: "**/**",
                                         excludes: "**/node_modules/**,.git/",
-                                        execCommand: "chmod +x /home/ec2-user/deploy/scripts/deploy.sh; chmod +x /home/ec2-user/deploy/scripts/build_n_run.sh;"
+                                        execCommand: "chmod +x /home/ec2-user/deploy/script/deploy.sh; chmod +x /home/ec2-user/deploy/script/build_n_run.sh;"
                                     )
                                 ]
                             )
@@ -74,7 +74,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/build_n_run.sh"
+                                        execCommand: "/home/ec2-user/deploy/script/build_n_run.sh"
                                     )
                                 ]
                             )
@@ -98,7 +98,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/build_n_run.sh"
+                                        execCommand: "/home/ec2-user/deploy/script/build_n_run.sh"
                                     )
                                 ]
                             )
@@ -122,7 +122,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/deploy_dev.sh"
+                                        execCommand: "/home/ec2-user/deploy/script/deploy_dev.sh"
                                     )
                                 ]
                             )
@@ -146,7 +146,7 @@ pipeline {
                                 verbose: true,
                                 transfers: [
                                     sshTransfer(
-                                        execCommand: "/home/ec2-user/deploy/scripts/deploy.sh"
+                                        execCommand: "/home/ec2-user/deploy/script/deploy.sh"
                                     )
                                 ]
                             )
