@@ -10,6 +10,6 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx.server.conf:/etc/nginx/nginx.server.conf
+      - ./script/nginx.conf:/etc/nginx/nginx.conf
+      - ./script/nginx.server.conf:/etc/nginx/nginx.server.conf
     container_name: front-web
