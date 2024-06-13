@@ -85,7 +85,7 @@ pipeline {
         }
 	// main브랜치인 경우 operation-server에서 nginx docker container를 실행한다.
 	// operation-server에서 build_n_run.sh 실행
-        stage("build and Run nginx for operation") {
+        stage("Build and Run nginx for operation") {
             when {
                 branch 'main'
             }
