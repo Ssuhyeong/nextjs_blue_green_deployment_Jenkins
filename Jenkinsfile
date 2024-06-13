@@ -133,7 +133,7 @@ pipeline {
         }
 	// main브랜치인 경우 operation-server에 배포한다.
 	// operation-server에서 deploy.sh 실행
-        stage("Deploy for operation") {
+        stage("deploy for operation") {
             when {
                 branch 'main'
             }
