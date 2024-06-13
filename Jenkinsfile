@@ -9,7 +9,7 @@ pipeline {
     stages {
 	// Something; Build, Test, etc.
 	// develop브랜치인 경우 develop-server로 프로젝트 파일을 보내준다.
-        stage('Transfer to develop server') {
+        stage('transfer to develop server') {
             when {
                 branch 'develop'
             }
