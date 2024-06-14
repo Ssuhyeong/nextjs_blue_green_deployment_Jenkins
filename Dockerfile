@@ -15,6 +15,8 @@ COPY ./ /app
 # 실행하는 컨테이너 안에서 work dir에 있는 package.json을 기반으로 모듈 설치
 RUN npm install
 
+RUN npm build
+
 #환경변수 설정 : 운영 or 개발
 ENV NODE_ENV production
 
