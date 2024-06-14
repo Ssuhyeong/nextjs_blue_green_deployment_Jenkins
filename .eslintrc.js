@@ -25,6 +25,12 @@ module.exports = {
   // eslint가 .eslintrc.js파일이 구성에 포함되어 있지 않더라도 lint를 시도하기 때문에 오류가 발생합니다.
 
   rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
     "react/jsx-props-no-spreading": "off",
     //  Error: Prop spreading is forbidden  react/jsx-props-no-spreading
     "react/react-in-jsx-scope": "off",

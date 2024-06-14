@@ -5,10 +5,15 @@ export default function NavBar() {
   const router = useRouter();
   return (
     <nav className="nav">
-      <img src="/vercel.svg" alt="Vercel Logo" />
+      <img src="/jenkinsxdocker.png" alt="Vercel Logo" />
+      <div>
+        <Link href="/" legacyBehavior>
+          <div className={router.pathname === "/" ? "active" : "btn"}>main</div>
+        </Link>
+      </div>
       <div>
         <Link href="/about" legacyBehavior>
-          <div className={router.pathname === "/about" ? "active" : ""}>
+          <div className={router.pathname === "/about" ? "active" : "btn"}>
             About
           </div>
         </Link>
@@ -26,7 +31,7 @@ export default function NavBar() {
             rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
         }
         img {
-          max-width: 100px;
+          max-width: 200px;
           margin-bottom: 5px;
         }
         nav a {
@@ -35,6 +40,9 @@ export default function NavBar() {
         }
         .active {
           color: tomato;
+        }
+        .btn {
+          cursor: pointer;
         }
         nav div {
           display: flex;

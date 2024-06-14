@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[197],{6141:function(n,u,t){(window.__NEXT_P=window.__NEXT_P||[]).push(["/404",function(){return t(6767)}])},6767:function(n,u,t){"use strict";function e(){return"what are u doing here?"}t.r(u),t.d(u,{default:function(){return e}})}},function(n){n.O(0,[888,774,179],function(){return n(n.s=6141)}),_N_E=n.O()}]);
