@@ -5,4 +5,4 @@
 ![image](https://github.com/Ssuhyeong/nextjs_blue_green_deployment_Jenkins/assets/73628071/11374db6-9cfc-4226-b810-f023b9ddce3c)
 
 
-배포 주소 : http://43.203.219.168/
+배포 주소 : http://43.203.219.168/ [ 비용 문제로 중지 ]
